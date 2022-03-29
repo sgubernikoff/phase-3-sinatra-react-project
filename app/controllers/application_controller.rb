@@ -1,29 +1,31 @@
+require 'pry'
 class ApplicationController < Sinatra::Base
-  set :default_content_type, 'application/json'
+  set default_content_type: "application/json"
   
   get '/' do
     "Concert Concert"
   end
 
-  get '/concerts' do
-    concerts = Concert.all.order(:artist).limit(10)
-    concerts.to_json
+
+  get '/reviews/' do
+    reviews = Review.all.order(:concert_rating).limit(10)
+    reviews.to_json
   end
 
-  get '/concerts/:id' do
-    concerts = Concert.find(params[:id])
-    concerts.to_json(include: { reviews: { include: :user } })
+  get '/reviews/:id' do
+    reviews = Review.find(params[:id])
+    reviews.to_json
   end
 
-  post '/concerts/:id' do
-    concerts = Concert.create(artist:params[:artist], date:params[:date], genre:params[:genre], venue:params[:venue], favorite_concert:params[:favorite_concert],)
-    concerts.to_json
+  post '/reviews/' do
+    reviews = Review.create(user_id:params[:user_id], concert_id:params[:concert_id], concert_rating:params[:concert_rating], comment:params[:comment])
+    reviews.to_json
   end
 
-  delete '/concerts/:id' do
-    concerts = Concert.find(params[:id])
-    concerts.destroy
-    concerts.to_json
+  delete '/reviews/:id' do
+    reviews = Review.find(params[:id])
+    reviews.destroy
+    reviews.to_json
   end
 
   patch '/reviews/:id' do

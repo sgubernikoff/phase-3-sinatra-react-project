@@ -15,9 +15,9 @@ concert3 = Concert.create(artist: "Eminem", date: "3/10/2021", genre: "Garbage",
 
 puts "Creating reviews..."
 
-Review.create(concert_id: concert1.id, user_id: user1.id, comment: "Aye Staple slap crazy", concert_rating: 5);
-Review.create(concert_id: concert2.id, user_id: user2.id, comment: "He sucks", concert_rating: 2);
-Review.create(concert_id: concert3.id, user_id: user3.id, comment: "Borderline unlistenable", concert_rating: 1);
+Review.create(concert_id: concert1.id, user_id: user1.id, comment: "Aye Filler Review", concert_rating: 5);
+Review.create(concert_id: concert2.id, user_id: user2.id, comment: "Random Review", concert_rating: 2);
+Review.create(concert_id: concert3.id, user_id: user3.id, comment: "Reviewed", concert_rating: 1);
 
 
 puts "Seeding done!"
