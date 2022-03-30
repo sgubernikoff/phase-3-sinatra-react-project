@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2022_03_28_151136) do
     t.string "date"
     t.string "genre"
     t.string "venue"
-    t.boolean "favorite_concert"
+    t.string "gif"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -28,8 +28,7 @@ ActiveRecord::Schema.define(version: 2022_03_28_151136) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
+    t.string "username"
     t.integer "age"
     t.string "gender"
   end

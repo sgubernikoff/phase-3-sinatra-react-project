@@ -5,7 +5,7 @@ class CreateConcerts < ActiveRecord::Migration[6.1]
       t.string :date
       t.string :genre
       t.string :venue
-      t.boolean :favorite_concert
+      t.string :gif
     end
   end
 end

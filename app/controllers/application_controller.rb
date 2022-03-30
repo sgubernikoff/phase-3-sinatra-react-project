@@ -8,8 +8,13 @@ class ApplicationController < Sinatra::Base
 
 
   get '/reviews/' do
-    reviews = Review.all.order(:concert_rating).limit(10)
+    reviews = Review.all
     reviews.to_json
+  end
+
+  get '/concerts/' do
+    concerts = Concert.all
+    concerts.to_json(include: { reviews: { include: :user } })
   end
 
   get '/reviews/:id' do
@@ -18,7 +23,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/reviews/' do
-    reviews = Review.create(user_id:params[:user_id], concert_id:params[:concert_id], concert_rating:params[:concert_rating], comment:params[:comment])
+    reviews = Review.create(params)
     reviews.to_json
   end
 
